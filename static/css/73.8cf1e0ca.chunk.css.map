@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/73.8cf1e0ca.chunk.css","mappings":"AAKA,uBACE","sources":["Components/Film/More-Infor/More-Infor.scss"],"sourcesContent":["\r\n.more-infor {\r\n\r\n}\r\n\r\n.more-infor-item:hover {\r\n  cursor: pointer;\r\n}\r\n\r\n"],"names":[],"sourceRoot":""}
