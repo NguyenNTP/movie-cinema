@@ -1,0 +1,125 @@
+.registerForm {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+.registerForm .banner {
+  padding: 20px;
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  color: #a354a3;
+  font-weight: 800;
+  font-size: 30px;
+  text-align: center;
+}
+.registerForm .banner .bannerQr img {
+  width: 200px;
+  height: 200px;
+}
+.registerForm .banner img {
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+}
+.registerForm .register_content {
+  background-color: #a354a3;
+  padding: 30px;
+  color: whitesmoke;
+  border-radius: 30px;
+  box-shadow: 2px 4px 10px 10px lightblue;
+}
+.registerForm .register_content h2 {
+  margin-bottom: 16px;
+}
+.registerForm .register_content .offscreen {
+  position: absolute;
+  left: -9999px;
+}
+.registerForm .register_content .errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.registerForm .register_content .instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  position: relative;
+  padding: 4px;
+  box-sizing: border-box;
+}
+.registerForm .register_content .hide {
+  display: none;
+}
+.registerForm .register_content .valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+.registerForm .register_content .invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+.registerForm .register_content input {
+  margin-bottom: 12px;
+  padding: 4px;
+  width: 94%;
+  border: none;
+  border-radius: 10px;
+}
+.registerForm .register_content input:focus {
+  outline: none;
+}
+.registerForm .register_content input[type=text] {
+  color: red;
+}
+.registerForm .register_content button {
+  padding: 4px;
+  color: black;
+  font-weight: 600;
+  align-self: center;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: none;
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+}
+.registerForm .register_content button:hover {
+  color: purple;
+}
+.registerForm .register_content .linkRegister {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.registerForm .register_content .linkRegister .login {
+  text-decoration: none;
+  font-weight: 700;
+  color: whitesmoke;
+  transition: ease-in-out 0.2s;
+}
+.registerForm .register_content .linkRegister .login:hover {
+  color: blue;
+}
+.registerForm .register_content .linkRegister .home {
+  text-decoration: none;
+  font-weight: 700;
+  color: whitesmoke;
+  transition: ease-in-out 0.2s;
+}
+.registerForm .register_content .linkRegister .home:hover {
+  color: blue;
+}
+
+.SuccessContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.SuccessContent h1 {
+  margin-right: 12px;
+}

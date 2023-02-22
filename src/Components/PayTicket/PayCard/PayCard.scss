@@ -1,0 +1,52 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-blue: #edf6fd;
+$color-blue-2: #0c8ded;
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$redFire: rgba(244, 91, 105, 1);
+
+.PayCard {
+  .Pay-ticket {
+    width: 300px;
+    background-color: $color-gray-2;
+    padding: 40px 20px 20px 20px;
+    border-radius: 20px;
+
+    .inlineimage {
+      max-width: 470px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .images {
+      display: inline-block;
+      max-width: 98%;
+      height: auto;
+      width: 22%;
+      margin: 1%;
+      left: 20px;
+      text-align: center
+    }
+
+    .total-sum {
+      font-size: 20px;
+      color: $redFire;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: $color-primary;
+      color: black;
+      outline: none;
+      border: none;
+    }
+  }
+
+  .logoBank {
+    width: 30px;
+  }
+}

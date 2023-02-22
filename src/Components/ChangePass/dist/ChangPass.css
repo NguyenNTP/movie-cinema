@@ -1,0 +1,45 @@
+.changePass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.changePass form {
+  background-color: purple;
+  padding: 20px 30px;
+  border-radius: 28px;
+  color: white;
+}
+.changePass form input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+.changePass form input:focus {
+  outline: none;
+}
+.changePass form .footerChange {
+  display: flex;
+  justify-content: space-between;
+}
+.changePass form .btnChangePass {
+  margin-top: 12px;
+  padding: 8px 16px;
+  transition: ease-in-out 0.4s;
+  border: none;
+}
+.changePass form .btnChangePass:hover {
+  background-color: palevioletred;
+}
+.changePass form .homeChangePass {
+  transform: translateY(10px);
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  transition: ease-in 0.4s;
+}
+.changePass form .homeChangePass:hover {
+  color: white;
+}

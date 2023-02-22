@@ -1,0 +1,102 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+
+.Schedule {
+  height: auto;
+  /*
+  overflow-y: auto;
+  */
+  flex-grow: 1;
+  box-sizing: border-box;
+  margin-top: 30px;
+  padding-bottom: 30px;
+
+  .Schedule-search {
+    margin-bottom: 50px;
+
+    .search-box {
+      @media only screen and (max-width: 1024px) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .Schedule-content {
+
+    .CardDay h4 {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .boxDate {
+      padding: 35px 20px 25px 20px;
+      border: 1px solid black;
+
+      .sub {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+    }
+
+    .boxDate > div > div {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .boxDate .movie-time span {
+      border: 1px solid black;
+      padding: 10px 40px;
+      margin: 5px;
+      position: relative;
+      font-weight: bold;
+      border-radius: 4px;
+      color: $color-black;
+      width: 40px;
+      text-align: center;
+      @media only screen and (max-width: 576px) {
+        padding: 10px 20px;
+      }
+    }
+
+    .boxDate .movie-time span:hover {
+      color: white;
+      background-color: $color-black;
+      cursor: pointer;
+    }
+
+    .title-cinema {
+      background-color: $color-primary;
+      display: inline-block;
+      position: relative;
+      width: 230px;
+      padding: 7px 20px;
+
+      h3 {
+        color: $color-black;
+      }
+
+      @media only screen and (max-width: 300px) {
+        width: 150px;
+      }
+    }
+
+    .title-cinema::after {
+      position: absolute;
+      background-color: #171C20;
+      display: inline-block;
+      content: "";
+      width: 5px;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+  }
+}
+
+/*
+.ant-row.pr-10.pl-10.css-dev-only-do-not-override-ixblex {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}*/

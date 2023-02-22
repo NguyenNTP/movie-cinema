@@ -1,0 +1,92 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$redFire: rgba(244, 91, 105, 1);
+$color-blue: #edf6fd;
+$greenSeaweed: rgba(2, 128, 144, 1);
+
+.book-seat {
+  border: 10px solid $color-primary;
+  margin-right: 30px;
+  overflow-y: scroll;
+  @media only screen and (max-width: 992px) {
+    margin-right: 0;
+  }
+
+  h2 {
+    background-color: $color-primary;
+
+  }
+
+  .block-seat {
+    padding: 10px;
+    @media only screen and (max-width: 992px) {
+      width: 1200px;
+    }
+    .name-row {
+      border: 1px solid black;
+      margin: 2px 0;
+      padding: 1px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .name-seat {
+      width: 22px;
+      text-align: center;
+      margin: 2px;
+      background-color: $color-gray-2;
+      font-size: 12px;
+    }
+
+    .name-seat:hover {
+      cursor: pointer;
+      background-color: $color-primary;
+      color: white;
+    }
+  }
+
+  .screen-block {
+    .screen-line {
+      width: 300px;
+      border: 2px solid $color-gray;
+    }
+  }
+
+  .bx-red {
+    display: inline-block;
+    background-color: $redFire;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+  }
+
+  .bx-green {
+    @extend .bx-red;
+    background-color: $greenSeaweed;
+  }
+
+  .bx-gray {
+    @extend .bx-red;
+    background-color: $color-gray;
+  }
+
+  .picked-seat {
+    width: 22px;
+    text-align: center;
+    margin: 2px;
+    font-size: 12px;
+    background-color: $greenSeaweed;
+    color: white;
+  }
+
+  .cant-pick-seat {
+    background-color: red;
+    width: 22px;
+    text-align: center;
+    margin: 2px;
+    font-size: 12px;
+    color: white;
+  }
+}

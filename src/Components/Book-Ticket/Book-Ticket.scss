@@ -1,0 +1,117 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-red: #da3326;
+$color-blue: #edf6fd;
+
+.book-ticket {
+  padding-top: 20px;
+
+  .book-detail {
+    border: 10px solid $color-primary;
+    margin-right: 30px;
+    @media only screen and (max-width: 1024px) {
+      margin-right: 0;
+    }
+
+    h2 {
+      background-color: $color-primary;
+    }
+
+    .table {
+      .table-title {
+        font-weight: bold;
+        background-color: $color-gray-2;
+        padding: 10px
+      }
+
+      input {
+        width: 50px;
+        @media only screen and (max-width: 576px) {
+          width: 35px;
+        }
+      }
+
+      .table-content {
+        padding: 10px;
+        border: 1px solid $color-gray-2;
+      }
+
+      .table-content:hover {
+        background-color: $color-blue;
+      }
+
+      .table-end {
+        color: $color-red;
+      }
+
+      .img-combo-cover {
+        width: 100px;
+      }
+    }
+  }
+
+  .prev-ticket {
+    @media only screen and (max-width: 992px) {
+      display: none;
+    }
+
+    .prev-ticket-cover {
+      /*
+      position: fixed;
+      */
+      padding: 0 10px 10px 10px;
+      height: fit-content;
+      width: 300px;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #172123 0, #182326 22%, #271d1b 53%, #47221c 76%, #391813 100%);;
+      color: $color-gray;
+
+      .film-age {
+        background-color: $color-primary;
+        padding: 2px;
+      }
+
+      .btn-next {
+        background-color: $color-primary;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      p {
+        border-bottom: 1px dashed $color-gray;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        margin-bottom: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .prev-ticket-mb {
+    display: none;
+    @media only screen and (max-width: 992px) {
+      display: inline-block;
+    }
+
+    .prev-ticket-cover {
+      padding: 0 10px 10px 10px;
+      background: linear-gradient(45deg, #172123 0, #182326 22%, #271d1b 53%, #47221c 76%, #391813 100%);;
+      color: $color-gray;
+
+      .btn-next {
+        background-color: $color-primary;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+    }
+  }
+}
+

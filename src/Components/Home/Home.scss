@@ -1,0 +1,16 @@
+@mixin block-movie{
+  margin-bottom: 40px;
+}
+
+.now-movie {
+  padding-top: 50px;
+  @include block-movie;
+}
+
+.this-week-movie {
+  @include block-movie;
+}
+
+.soon-movie {
+  @include block-movie;
+}

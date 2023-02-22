@@ -1,0 +1,82 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-blue: #edf6fd;
+$color-blue-2: #0c8ded;
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$redFire: rgba(244, 91, 105, 1);
+
+
+.changePass {
+  height: 100vh;
+
+  .changePass-content {
+    background: linear-gradient(45deg, #172123 0, #182326 22%, #271d1b 53%, #47221c 76%, #391813 100%);
+    box-sizing: border-box;
+    width: 300px;
+    height: fit-content;
+    padding: 40px;
+    color: whitesmoke;
+    border-radius: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 4px 10px 10px lightblue;
+
+    form {
+
+      h3 {
+        margin-bottom: 20px;
+      }
+
+      input {
+        box-sizing: border-box;
+        background-color: $color-gray-2;
+        margin-bottom: 30px;
+        padding: 10px 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .btnChangePass {
+        width: 70%;
+        padding: 10px 20px;
+        color: black;
+        font-weight: 600;
+        margin-top: 12px;
+        border-radius: 8px;
+        border: none;
+        transition: ease-in-out 0.2s;
+        cursor: pointer;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: darken($color-primary, 20%);
+        }
+
+      }
+
+      .homeChangePass {
+        transform: translateY(10px);
+        text-decoration: none;
+        color: black;
+        font-size: 24px;
+        transition: ease-in 0.4s;
+
+        &:hover {
+          color: white;
+        }
+      }
+
+
+    }
+  }
+}
+

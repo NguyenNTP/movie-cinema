@@ -1,0 +1,47 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-red: #da3326;
+$color-blue: #edf6fd;
+
+.book-fail {
+  padding-top: 20px;
+
+  .book-fail-content {
+    border-style: solid;
+    border-color: $color-primary;
+    border-top-width:10px;
+    border-bottom-width: 15px;
+    border-left-width: 15px;
+    border-right-width: 15px;
+
+    h2 {
+      background-color: $color-primary;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .sorry-img-cover {
+      @media only screen and (max-width:992px) {
+        width: 90%;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      width: 400px;
+      margin-right: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+    @media only screen and (max-width:992px) {
+      & >div {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+
+  }
+}

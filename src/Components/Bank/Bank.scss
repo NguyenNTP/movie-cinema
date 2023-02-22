@@ -1,0 +1,90 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-blue: #edf6fd;
+$color-blue-2: #0c8ded;
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$redFire: rgba(244, 91, 105, 1);
+
+.bank {
+  height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  form {
+    background: linear-gradient(45deg, #172123 0, #182326 22%, #271d1b 53%, #47221c 76%, #391813 100%);
+    box-sizing: border-box;
+    width: 400px;
+    height: fit-content;
+    padding: 40px;
+    color: whitesmoke;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 4px 10px 10px lightblue;
+
+    input {
+      box-sizing: border-box;
+      background-color: $color-gray-2;
+      margin-bottom: 20px;
+      padding: 10px 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .footerBank {
+      margin-top: 12px;
+
+      button {
+        width: 70%;
+        padding: 10px 20px;
+        color: black;
+        font-weight: 600;
+        margin-top: 12px;
+        border-radius: 8px;
+        border: none;
+        transition: ease-in-out 0.2s;
+        cursor: pointer;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: darken($color-primary, 20%);
+        }
+      }
+
+      .bankLink {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: ease-in-out 0.3s;
+
+        &:hover {
+          color: palevioletred;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 576px) {
+      width: 300px;
+    }
+  }
+}
+
+
+.LoginSuccess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  h1 {
+    margin-right: 12px;
+  }
+}

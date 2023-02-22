@@ -1,0 +1,454 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.mainSize {
+    width: 1200px;
+}
+
+@media only screen and (max-width: 600px) {
+    .mainSize {
+        max-width: 95%;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .mainSize {
+        width: 270px;
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+    .mainSize {
+        width: 576px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .mainSize {
+        width: 750px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .mainSize {
+        width: 992px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .mainSize {
+        width: 1200px;
+    }
+}
+
+
+.t-upper {
+    text-transform: uppercase;
+}
+
+.t-cen {
+    text-align: center;
+}
+
+.t-end {
+    text-align: end;
+}
+
+.t-decor {
+    text-decoration: none;
+}
+
+.t-black {
+    color: black;
+}
+
+.t-white {
+    color: white;
+}
+
+.lineh-25 {
+    line-height: 25px;
+}
+
+.line-non {
+    outline: none;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.bx-siz {
+    box-sizing: border-box;
+}
+
+.rad-10 {
+    border-radius: 10px;
+}
+
+.rad-20 {
+    border-radius: 20px;
+}
+
+.rad-30 {
+    border-radius: 30px;
+}
+
+.m-5 {
+    margin: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mr-40 {
+    margin-right: 40px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.ml-40 {
+    margin-left: 40px;
+}
+
+.mt-60 {
+    margin-top: 60px;
+}
+
+.mr-60 {
+    margin-right: 60px;
+}
+
+.mb-60 {
+    margin-bottom: 60px;
+}
+
+.ml-60 {
+    margin-left: 60px;
+}
+
+.p-5 {
+    padding: 5px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.p-40 {
+    padding: 40px;
+}
+
+.p-60 {
+    padding: 60px;
+}
+
+.pt-5 {
+    padding-top: 5px;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+
+.pb-5 {
+    padding-bottom: 5px;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.pr-20 {
+    padding-right: 20px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.pl-20 {
+    padding-left: 20px;
+}
+
+.pt-30 {
+    padding-top: 30px;
+}
+
+.pr-30 {
+    padding-right: 30px;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.pl-30 {
+    padding-left: 30px;
+}
+
+.pt-40 {
+    padding-top: 40px;
+}
+
+.pr-40 {
+    padding-right: 40px;
+}
+
+.pb-40 {
+    padding-bottom: 40px;
+}
+
+.pl-40 {
+    padding-left: 40px;
+}
+
+.pt-60 {
+    padding-top: 60px;
+}
+
+.pr-60 {
+    padding-right: 60px;
+}
+
+.pb-60 {
+    padding-bottom: 60px;
+}
+
+.pl-60 {
+    padding-left: 60px;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.fs-13 {
+    font-size: 13px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-25 {
+    font-size: 25px;
+}
+
+
+.fs-30 {
+    font-size: 30px;
+}
+
+.fs-35 {
+    font-size: 35px;
+}
+
+.fs-40 {
+    font-size: 40px;
+}
+
+.fs-45 {
+    font-size: 45px;
+}
+
+.fl {
+    display: flex;
+}
+
+.fl-col {
+    flex-direction: column;
+}
+
+.fl-wr {
+    flex-wrap: wrap;
+}
+
+.fl-cen {
+    justify-content: center;
+}
+
+.fl-r {
+    justify-content: flex-end;
+}
+
+.fl-spw {
+    justify-content: space-between;
+}
+
+.fl_t {
+    align-items: flex-start;
+}
+
+.fl-mid {
+    align-items: center;
+}
+
+.fl-b {
+    align-items: flex-end;
+}
+
+.w-10 {
+    width: 10%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.h-auto {
+    height: auto;
+}
+
+.inline-bl {
+    display: inline-block;
+}
+
+.b {
+    font-weight: bolder;
+}
+
+.i {
+    font-style: italic;
+}
+
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-fix {
+    background-attachment: fixed;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.list-non {
+    list-style: none;
+}
+
+.flo-l {
+    float: left;
+}
+
+.fl-1-1-0 {
+    flex: 1 1 0;
+}
+
+.i {
+    font-style: italic;
+}
+
+.btn-pointer {
+    cursor: pointer;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+

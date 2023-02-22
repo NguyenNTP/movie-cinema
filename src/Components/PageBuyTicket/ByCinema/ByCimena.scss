@@ -1,0 +1,122 @@
+.FindByCinema {
+
+  $color-black: #171C20;
+  $color-primary: rgb(253, 183, 59);
+  $color-gray: #999ea3;
+  $color-gray-2: #ebebeb;
+  $color-blue: #edf6fd;
+  $color-blue-2: #0c8ded;
+  $greenSeaweed: rgba(2, 128, 144, 1);
+  $blueQueen: rgba(69, 105, 144, 1);
+  $redFire: rgba(244, 91, 105, 1);
+
+  h3 {
+    background-color: $color-primary;
+  }
+
+  h4 {
+    font-weight: 500;
+  }
+
+  .list-film {
+    border: 1px solid $color-gray-2;
+    @media only screen and (max-width: 992px) {
+      height: 300px;
+      overflow-x: scroll;
+    }
+
+    .film-block {
+      box-sizing: border-box;
+      padding: 20px 10px;
+      border-bottom: 1px solid $color-gray-2;
+
+      .img-film-cover {
+        width: 100px;
+      }
+
+      .film-age {
+        background-color: $color-primary;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .sub-name {
+        color: gray;
+      }
+
+      &:hover {
+        background-color: $color-blue;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .list-cinema {
+    border: 1px solid $color-gray-2;
+    @media only screen and (max-width: 992px) {
+      height: 300px;
+      overflow-x: scroll;
+    }
+
+    .cinema-block {
+      box-sizing: border-box;
+      padding: 20px 10px;
+      border-bottom: 1px solid $color-gray-2;
+
+      &:hover {
+        background-color: $color-blue;
+        font-weight: 600;
+      }
+    }
+
+
+  }
+
+  .list-showtime {
+    @media only screen and (max-width: 992px) {
+      height: 300px;
+      overflow-x: scroll;
+    }
+
+    .CardDay {
+      padding-left: 20px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border: 1px solid $color-gray-2;
+    }
+
+    .boxDate >div >div {
+      padding: 35px 0 25px 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+
+      .sub {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+    }
+
+    .boxDate .movie-time span {
+      border: 1px solid black;
+      padding: 10px 20px;
+      margin: 5px;
+      position: relative;
+      font-weight: bold;
+      border-radius: 4px;
+      color: $color-black;
+      width: 40px;
+      text-align: center;
+      @media only screen and (max-width: 576px) {
+        padding: 10px 20px;
+      }
+    }
+
+    .boxDate .movie-time span:hover {
+      color: $color-black;
+      background-color: $color-blue;
+      cursor: pointer;
+    }
+
+  }
+}

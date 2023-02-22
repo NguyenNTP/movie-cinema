@@ -1,0 +1,25 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-blue: #edf6fd;
+$color-blue-2: #0c8ded;
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$redFire: rgba(244, 91, 105, 1);
+.page-buyticket {
+
+  height: fit-content;
+  padding-top: 60px;
+  padding-bottom: 50px;
+
+  .title-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-gray-2;
+    margin-bottom: 40px;
+    .by-film:hover {
+      font-weight: bold;
+    }
+  }
+
+}

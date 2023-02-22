@@ -1,0 +1,133 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+
+
+.rapComponent {
+  // background-color: blueviolet;
+  // ##################
+  padding-top: 30px;
+
+  .header-rap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+
+  // ##################
+
+  .content {
+    display: flex;
+
+    .left {
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      // background-color: palevioletred;
+
+      .leftInput {
+        padding: 8px 14px;
+        width: 30%;
+      }
+
+      .selectFilm {
+        margin-left: 24px;
+        width: 36%;
+        padding: 8px 16px;
+      }
+
+      .allFilm {
+        display: flex;
+        flex-direction: column;
+
+        .cardFilm {
+          display: flex;
+          margin-top: 60px;
+          box-sizing: border-box;
+
+          .imgCardFilm {
+            width: 100px;
+            box-sizing: border-box;
+            margin-right: 30px;
+            // height: 200px;
+            img {
+              box-sizing: border-box;
+            }
+          }
+
+
+          .infoFilm {
+            justify-content: space-between;
+            width: 300px;
+            flex-grow: 1;
+            // padding-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+          }
+
+          .cutheTime {
+            .gioSpan {
+              // display: flex;
+              // flex-wrap: wrap;
+              // background-color: orangered;
+              border: 1px solid black;
+              padding: 10px 40px;
+              margin: 5px;
+              position: relative;
+              font-weight: bold;
+              border-radius: 4px;
+              color: $color-black;
+              width: 40px;
+              text-align: center;
+              @media only screen and (max-width: 576px) {
+                padding: 10px 20px;
+              }
+            }
+            span {
+              margin-right: 10px;
+            }
+          }
+          .gioSpan:hover {
+            background-color: black;
+            cursor: pointer;
+            color: white;
+          }
+
+
+        }
+
+
+      }
+
+
+    }
+
+    .right {
+      box-sizing: border-box;
+      .imgHeader {
+        width: 100%;
+        height: 300px;
+      }
+
+      .thongtin {
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .diachi {
+        span {
+          color: gray;
+        }
+      }
+    }
+  }
+}
+
+
+.alltimefilm {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}

@@ -1,0 +1,39 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+$color-gray: #999ea3;
+$color-gray-2: #ebebeb;
+$color-blue: #edf6fd;
+$color-blue-2: #0c8ded;
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$redFire: rgba(244, 91, 105, 1);
+
+.findTicket {
+  margin-top: 40px;
+
+  .table-Ticket {
+    border: 1px solid black;
+
+    .title-table {
+      background-color: $color-primary;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+
+    .ticket-item {
+      padding: 20px;
+      border-bottom: 1px solid $color-gray-2;
+      @media screen and (max-width: 662px) {
+        overflow-y: scroll;
+      }
+
+      &:hover {
+        background-color: $color-blue;
+      }
+    }
+  }
+
+  img {
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,90 @@
+.header {
+  background-color: #FDB73B;
+
+  .mainSize {
+
+    .Logo {
+      height: 30px;
+    }
+
+    .Search {
+      width: 350px;
+      margin-left: 40px;
+
+      .Search-Form {
+        .icon-search {
+          z-index: 100;
+          left: 1px;
+          font-size: 20px;
+        }
+
+        input {
+          outline: none;
+          border: none;
+          font-weight: 300;
+          font-size: 16px;
+        }
+      }
+
+      @media screen and (max-width: 912px) {
+        display: none;
+      }
+    }
+
+    #list-page-mb {
+      display: none;
+      @media screen and (max-width: 912px) {
+        display: inline-block;
+      }
+    }
+
+
+    .list-page {
+      li {
+        display: flex;
+        list-style: none;
+        box-sizing: border-box;
+        width: 85px;
+
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 17px;
+          border-bottom: 2px solid transparent;
+        }
+      }
+
+      li:last-child {
+        margin-right: 0;
+      }
+
+      li:hover {
+        a {
+          font-weight: bold;
+          border-bottom: 2px solid black;
+        }
+      }
+
+      @media only screen and (max-width: 912px) {
+        display: none;
+      }
+    }
+
+
+    .icon-login {
+      color: black;
+      font-size: 17px;
+    }
+
+    .drop-menu:hover {
+      color: black;
+    }
+
+    .user-name {
+      @media only screen and (max-width: 912px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+}

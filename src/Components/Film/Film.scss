@@ -1,0 +1,18 @@
+.container-film {
+  color: #626b72;
+  padding-top: 50px;
+
+  .col-left {
+  }
+
+  .col-right {
+    height: fit-content;
+    @media only screen and (max-width: 760px) {
+      display: none;
+    }
+  }
+}
+
+
+
+

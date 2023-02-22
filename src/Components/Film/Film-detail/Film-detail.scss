@@ -1,0 +1,92 @@
+$color-black: #171C20;
+$color-primary: rgb(253, 183, 59);
+
+.Film-detail {
+  .img-film {
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+
+    .btn-play:hover {
+      cursor: pointer;
+    }
+  }
+
+  .film-infor {
+    width: 60%;
+    margin-left: 20px;
+
+    .rating-movie {
+      font-size: 11px;
+      height: 40px;
+      background: url("https://www.galaxycine.vn/website/images/ic_star_yellow.png") no-repeat;
+      background-size: 21px;
+      padding-left: 24px;
+      background-position: left center;
+      vertical-align: middle;
+
+      .rating-value {
+        font-size: 18px;
+        @media only screen and (max-width: 600px) {
+          font-size: 13px;
+        }
+      }
+
+      .btn-vote {
+        color: black;
+        background-color: #FDB73B;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 1px 5px;
+        border: none;
+        cursor: pointer;
+        margin: 0 10px;
+        @media only screen and (max-width: 600px) {
+          font-size: 10px;
+          padding: 1px 2px;
+        }
+      }
+
+    }
+
+    h1 {
+      font-weight: 600;
+      text-transform: uppercase;
+      color: $color-black;
+      @media only screen and (max-width: 600px) {
+        font-size: 14px;
+        margin-top: 10px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      margin-left: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px ) {
+  .Film-detail > div {
+    flex-direction: column;
+  }
+}
+
+.player-wrapped {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
