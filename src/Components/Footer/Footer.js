@@ -61,7 +61,7 @@ function Footer() {
                         </Col>
                     </Row>
                 <div className="company-name t-cen">
-                    © 2023 Nhom07
+                    © 2023 Phương Nguyên Nguyễn
                 </div>
             </div>
         </div>

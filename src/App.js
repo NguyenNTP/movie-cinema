@@ -35,7 +35,7 @@ function App() {
             <BrowserRouter>
                 <Header/>
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
+                    <Route path="/WebDatVeXemPhim" element={<Home/>}/>
                     <Route path='/Film/:id' element={<Film/>}/>
                     <Route path="/Login" element={<Login/>}/>
                     <Route path="/Register" element={<Register/>}/>
