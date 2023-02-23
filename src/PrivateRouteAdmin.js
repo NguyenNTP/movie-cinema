@@ -11,7 +11,7 @@ const PrivateRouteAdmin = ({children, Role}) => {
 if(user && parseUser.Role === Role) {
     return children
 } else {
-      return <Navigate to = "/"  replace/>
+      return <Navigate to = "/movie-cinema"  replace/>
 
   }
 };

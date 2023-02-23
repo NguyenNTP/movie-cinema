@@ -83,7 +83,7 @@ function Header() {
                     key: 'BuyTicket',
                 },
                 {
-                    label: <Link to={"/"}>Phim</Link>,
+                    label: <Link to={"/movie-cinema"}>Phim</Link>,
                     key: 'Movie',
                 },
                 {
@@ -98,7 +98,7 @@ function Header() {
         <div className="header fl fl-cen pt-10 pb-10">
             <div className="mainSize fl fl-mid fl-spw">
                 <div className="fl fl-mid">
-                    <Link className="Logo" to={"/"}>
+                    <Link className="Logo" to={"/movie-cinema"}>
                         <img className="w-100" src={require('./logo_Desktop.png')} alt="Logo"/>
                     </Link>
                     <div className="Search relative ml-10">
@@ -112,7 +112,7 @@ function Header() {
                 <div className="fl fl-mid">
                     <ul className="list-page fl bx-siz">
                         <li><Link to={"/Muave"}>Mua vé</Link></li>
-                        <li><Link to={"/"}>Phim</Link></li>
+                        <li><Link to={"/movie-cinema"}>Phim</Link></li>
                         <li><Link to={"/rap"}>Rạp</Link></li>
                     </ul>
                     {userInLocalstorage &&

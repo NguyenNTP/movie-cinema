@@ -50,7 +50,7 @@ const Bank = () => {
     return success ? (
         <section className="LoginSuccess">
             <h1>Bạn đã thanh toán thành công!</h1>
-            <Link to="/" style={{textDecoration: "none"}}>
+            <Link to="/movie-cinema" style={{textDecoration: "none"}}>
                 Trang chủ
             </Link>
         </section>

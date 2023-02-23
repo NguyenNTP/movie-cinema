@@ -81,14 +81,14 @@ const Login = () => {
     if (user) {
         return (
             <>
-                <Navigate to="/" replace/>
+                <Navigate to="/movie-cinema" replace/>
             </>
         );
     }
     return (
         <>
             {success ? (
-                <Navigate to="/" replace/>
+                <Navigate to="/movie-cinema" replace/>
             ) : (
 
                 <div className="loginForm fl fl-cen fl-mid">
