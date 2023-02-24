@@ -20,22 +20,19 @@ function Film() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+
         const fetchAPI = async () => {
             const res = await Services.getLsFilmAPI()
-            console.log(res)
             setFilm(
                 [
                     ...res.movieShowing.filter(n => n.id === id),
                     ...res.movieCommingSoon.filter(n => n.id === id)
                 ][0]
             )
+            const filmSchedule = await Services.getFilmSchedule(id)
+            dispatch(getSchedule(filmSchedule))
         }
         fetchAPI()
-
-
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/movie/" + id)
-            .then(res => res.json())
-            .then(data => dispatch(getSchedule(data)))
     }, [id])
 
     useEffect(() => {

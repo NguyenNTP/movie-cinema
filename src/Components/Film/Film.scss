@@ -6,7 +6,7 @@
   }
 
   .col-right {
-    height: fit-content;
+    overflow: hidden;
     @media only screen and (max-width: 760px) {
       display: none;
     }

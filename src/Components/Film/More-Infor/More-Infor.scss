@@ -1,9 +1,12 @@
 
 .more-infor {
-
+  height: 100%;
 }
 
-.more-infor-item:hover {
-  cursor: pointer;
+.more-infor-item {
+  &:hover {
+    cursor: pointer;
+  }
 }
+
 

@@ -78,13 +78,7 @@ function FilmDetail(props) {
                     </div>
                 </div>
             </div>
-            {/*  <p className="mt-40">Gia đình chữ “N” mỗi người một cá tính, một sở thích riêng nhưng tất cả đều
-                phải chung tay vào công việc bận rộn của quán bánh canh cua nức tiếng của bà Nữ. Hình ảnh
-                các
-                thành viên gia đình bà Nữ đều rất gần gũi với hình mẫu người phụ nữ trong đời sống thường
-                ngày:
-                bản lĩnh, giỏi giang và thừa sức xoay trở với hằng hà sa số những thử thách trong cuộc
-                sống.</p>*/}
+            <p className="mt-40" dangerouslySetInnerHTML={{__html: props.film.description}}></p>
         </div>
     );
 }

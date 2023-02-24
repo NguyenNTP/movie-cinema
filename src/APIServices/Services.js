@@ -4,7 +4,15 @@ export const getLsFilmAPI = async () => {
 
     try {
         const res = await request.get("cinema/nowAndSoon")
-        console.log(res)
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getFilmSchedule = async (id) =>{
+    try {
+        const res = await request.get("cinema/movie/" +id)
         return res
     } catch (error) {
         console.log(error)
