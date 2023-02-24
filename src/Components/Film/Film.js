@@ -4,6 +4,9 @@ import {Col, Row} from 'antd';
 import './Film.scss';
 import {useDispatch} from "react-redux";
 import {getSchedule, getFilm} from "../../Redux/Action";
+import * as Services from "../../APIServices/Services"
+import Loading from "../Loading/Loading";
+
 
 const FilmDetail = React.lazy(() => import('./Film-detail/Film-detail'));
 const FilmSchedule = React.lazy(() => import('./Film-schedule/Film-schedule'));
@@ -17,16 +20,18 @@ function Film() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/nowAndSoon")
-            .then(res => res.json())
-            .then(data => {
-                setFilm(
-                    [
-                        ...data.movieShowing.filter(n => n.id === id),
-                        ...data.movieCommingSoon.filter(n => n.id === id)
-                    ][0]
-                )
-            })
+        const fetchAPI = async () => {
+            const res = await Services.getLsFilmAPI()
+            console.log(res)
+            setFilm(
+                [
+                    ...res.movieShowing.filter(n => n.id === id),
+                    ...res.movieCommingSoon.filter(n => n.id === id)
+                ][0]
+            )
+        }
+        fetchAPI()
+
 
         fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/movie/" + id)
             .then(res => res.json())
@@ -41,23 +46,22 @@ function Film() {
 
 
     return (
-        film && <div className="container-film fl fl-col fl-mid">
-            <div className="mainSize fl">
-                <Row className="pr-10 pl-10" gutter={24}>
-                    <Col xs={24} sm={18} className="col-left">
-                        <Suspense fallback={<p>Loading...</p>}>
+        film &&
+        <Suspense fallback={<Loading/>}>
+            <div className="container-film fl fl-col fl-mid">
+                <div className="mainSize fl">
+                    <Row className="pr-10 pl-10" gutter={24}>
+                        <Col xs={24} sm={18} className="col-left">
                             <FilmDetail film={film}/>
                             <FilmSchedule/>
-                        </Suspense>
-                    </Col>
-                    <Col xs={0} sm={6} className="col-right">
-                        <Suspense fallback={<p>Loading...</p>}>
+                        </Col>
+                        <Col xs={0} sm={6} className="col-right">
                             <MoreInfor/>
-                        </Suspense>
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
+                </div>
             </div>
-        </div>
+        </Suspense>
     );
 }
 
