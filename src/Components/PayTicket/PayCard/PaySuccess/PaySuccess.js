@@ -7,6 +7,7 @@ import {QRCode} from 'antd';
 import handleMoney from "../../../Logic/HandleMoney";
 import {useDispatch} from "react-redux";
 import {convertDate} from "../../../Logic/handleDate";
+import * as Services from "../../../../APIServices/Services"
 
 
 function PaySuccess() {
@@ -39,12 +40,12 @@ function PaySuccess() {
     )
 
     useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/Ticket")
-            .then(res => res.json())
-            .then(data => {
-                    getLsTicket(data)
-                }
-            )
+
+        const fetchAPI = async () => {
+            const res = await Services.getTicket()
+            getLsTicket(res)
+        }
+        fetchAPI()
     }, [])
     useEffect(() => {
         if (lsTicket) {

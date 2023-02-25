@@ -4,6 +4,7 @@ import {Row, Col, Modal, QRCode} from "antd"
 import {convertDate} from "../../Logic/handleDate";
 import handleMoney from "../../Logic/HandleMoney";
 import {useParams} from "react-router-dom";
+import * as Services from "../../../APIServices/Services"
 
 function FindTicket() {
 
@@ -27,9 +28,12 @@ function FindTicket() {
     };
 
     useEffect(() => {
-        fetch(`https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/TicketByEmail/${email}`)
-            .then(res => res.json())
-            .then(data => getLsTicket(data))
+
+        const fetchAPI = async () => {
+            const res = Services.getTicketByEmail()
+            getLsTicket(res)
+        }
+        fetchAPI()
     }, [])
 
     useEffect(() => {

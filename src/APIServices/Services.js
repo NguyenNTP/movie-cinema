@@ -76,3 +76,22 @@ export const getTicketByShowCode = async (sessionId) => {
         console.log(error)
     }
 }
+
+export const getTicketByEmail = async (email) => {
+    try {
+        const res = await request.get(`cinema/TicketByEmail/${email}`)
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getTicket = async () => {
+    try {
+        const res = await request.get('cinema/Ticket')
+        return res
+
+    } catch (error) {
+        console.log(error)
+    }
+}
