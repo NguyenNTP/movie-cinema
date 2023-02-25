@@ -9,5 +9,16 @@ export const get = async (patch) => {
     return response.data
 }
 
+export const post =  async (patch, data, config) => {
+  const res =  await request.post(patch, {
+        data
+    },{config})/*, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}*/
+    return res
+}
 
 export default request

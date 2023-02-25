@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./More-Infor.scss";
 import Slider from "react-slick"
+import * as Services from "../../../APIServices/Services"
 
 function MoreInfor() {
 
@@ -22,12 +23,14 @@ function MoreInfor() {
         document.getElementById(id).remove()
     }
 
+    useEffect(()=>{
+        const fetchAPI = async () => {
+            const dataMoreIF = await Services.getMoreInfor()
+            getMoreInfor(dataMoreIF)
+        }
+        fetchAPI()
+    },[])
 
-    useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/moreInfo")
-            .then(res => res.json())
-            .then(data => getMoreInfor(data))
-    }, [])
 
 
     return (

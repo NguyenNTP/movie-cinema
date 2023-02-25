@@ -6,6 +6,8 @@ import getToday from "../../Logic/handleDate";
 import {useSelector} from "react-redux";
 import {dataSchedule} from "../../../Redux/Selector";
 import {useNavigate} from "react-router-dom";
+import * as Services from "../../../APIServices/Services"
+
 
 function FilmSchedule() {
     const [lsCity, setLsCity] = useState(null);
@@ -107,17 +109,15 @@ function FilmSchedule() {
 
 
     useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/city")
-            .then(res => res.json())
-            .then(data => {
-                setLsCity(data)
-                fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/cinemas")
-                    .then(res => res.json())
-                    .then(data => {
-                        setlsCinema(data)
-                        setCinemaFilterArr(data)
-                    })
-            })
+
+        const fetchAPI = async () => {
+            const dataLsCity = await Services.getLsCity()
+            setLsCity(dataLsCity)
+            const dataLsCinema = await Services.getLsCinema()
+            setlsCinema(dataLsCinema)
+            setCinemaFilterArr(dataLsCinema)
+        }
+        fetchAPI()
     }, [schedule])
 
 

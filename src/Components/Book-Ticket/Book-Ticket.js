@@ -7,6 +7,8 @@ import {useDispatch} from "react-redux";
 import {setTicketInfor} from "../../Redux/Action";
 import handleMoney from "../Logic/HandleMoney";
 import {toast} from "react-toastify";
+import * as Services from "../../APIServices/Services"
+import Loading from "../Loading/Loading";
 
 const BookSeat = React.lazy(() => import('../Book-Seat/Book-seat'));
 const PayTicKet = React.lazy(() => import('../PayTicket/PayTicket'))
@@ -42,44 +44,47 @@ function BookTicket() {
 
     const dispatch = useDispatch()
 
+
     useEffect(() => {
-        fetch(`https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/cinemas/${cinemaId}`)
-            .then(res => res.json())
-            .then(data => {
-                data.map(n => {
-                    n.dates.map(date => {
-                        date.bundles.map(bundle => {
-                            bundle.sessions.map(session => {
-                                if (session.sessionId === sessionId) {
-                                    setFilm({
-                                        name: n.name,
-                                        imageLandscape: n.imageLandscape,
-                                        imagePortrait: n.imagePortrait,
-                                        age: n.age,
-                                        showDate: date.showDate,
-                                        dayOfWeekLabel: date.dayOfWeekLabel,
-                                        showTime: session.showTime,
-                                        screenName: session.screenName,
-                                    })
-                                }
-                            })
+
+        const fetchAPI = async () => {
+
+            //Lay thong tin film
+
+            const res = await Services.getScheduleCinema(cinemaId)
+            console.log(res)
+            res.map(n => {
+                n.dates.map(date => {
+                    date.bundles.map(bundle => {
+                        bundle.sessions.map(session => {
+                            if (session.sessionId === sessionId) {
+                                setFilm({
+                                    name: n.name,
+                                    imageLandscape: n.imageLandscape,
+                                    imagePortrait: n.imagePortrait,
+                                    age: n.age,
+                                    showDate: date.showDate,
+                                    dayOfWeekLabel: date.dayOfWeekLabel,
+                                    showTime: session.showTime,
+                                    screenName: session.screenName,
+                                })
+                            }
                         })
                     })
                 })
             })
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/booking/detail")
-            .then(res => res.json())
-            .then(data => setDataTicket(data))
 
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/cinemas")
-            .then(res => res.json())
-            .then(data => {
-                setCinema([
-                    ...data.filter(n => {
-                        return n.code === cinemaId
-                    })
-                ])
-            })
+            const dtTicket = await Services.getBookingDetail()
+            setDataTicket(dtTicket)
+
+            const lsCinema = await Services.getLsCinema()
+            setCinema([
+                ...lsCinema.filter(n => {
+                    return n.code === cinemaId
+                })
+            ])
+        }
+        fetchAPI()
 
     }, [])
 
@@ -265,8 +270,9 @@ function BookTicket() {
                 "TheaterName": film.screenName,
                 "FilmName": film.name,
                 "Combo": Object.entries(arrCombo).map(n => {
-                    if(n[1] !== 0) {
-                    return n[0] + `(${n[1]})`}
+                    if (n[1] !== 0) {
+                        return n[0] + `(${n[1]})`
+                    }
                 },).join(' '),
                 "SeatCode": seatCode,
                 "ShowTime": convertDate(film.showDate, film.showTime),
@@ -284,7 +290,7 @@ function BookTicket() {
     useEffect(() => {
 
         Object.values(valueCombo).map((n, index) => {
-                if (n!==0) {
+                if (n !== 0) {
                     setArrCombo(prev => {
                             return {
                                 ...prev,
@@ -292,8 +298,7 @@ function BookTicket() {
                             }
                         }
                     )
-                }
-                else {
+                } else {
                     setArrCombo(prev => {
                             return {
                                 ...prev,
@@ -312,6 +317,7 @@ function BookTicket() {
     }
 
     return (
+        <Suspense fallback={<Loading />}>
         <div className="book-ticket fl fl-cen">
 
             <div className="mainSize">
@@ -335,7 +341,7 @@ function BookTicket() {
                                 </p>
                                 <p><span className="b">Combo:</span> {
                                     Object.entries(arrCombo).map(n => {
-                                        if(n[1] !== 0) {
+                                        if (n[1] !== 0) {
                                             return n[0] + `(${n[1]})`
                                         }
                                     },).join(' ')
@@ -371,6 +377,7 @@ function BookTicket() {
                     </div>
                 </div>
                 <Row gutter={20} className="pt-20 pb-20">
+
                     <Col xs={24} ms={24} lg={15} xl={18}>
                         {showTicketdetail &&
                             <div className="book-detail">
@@ -445,8 +452,9 @@ function BookTicket() {
                                                 <Col className="fl fl-mid fl-r" xs={12} sm={6} lg={3}>
                                                     <p>{handleMoney(n.displayPrice)}</p>
                                                 </Col>
-                                                {dataSumCombo !== [] && <Col xs={0} sm={0} lg={5} className="fl fl-mid fl-r"
-                                                ><p>{handleMoney(dataSumCombo[index])}</p></Col>}
+                                                {dataSumCombo !== [] &&
+                                                    <Col xs={0} sm={0} lg={5} className="fl fl-mid fl-r"
+                                                    ><p>{handleMoney(dataSumCombo[index])}</p></Col>}
                                             </Row>
                                         })
                                     }
@@ -459,18 +467,26 @@ function BookTicket() {
                         }
                         {
                             showBookSeat &&
-                            <Suspense fallback={<p>...Loading</p>}>
+                          /*  <Suspense fallback={<Loading/>}>*/
                                 <BookSeat parentCallback={callbackFunction} sumTicket={valueTicket}
                                           coupleTicket={detailValTicket}/>
+/*
                             </Suspense>
+*/
                         }
                         {
                             showPayTicket &&
-                            <Suspense fallback={<p>...Loading</p>}>
+/*
+                            <Suspense fallback={<Loading/>}>
+*/
                                 <PayTicKet comeBack={comebackPayCard}/>
+/*
                             </Suspense>
+*/
+
                         }
                     </Col>
+
                     <Col lg={9} xl={6} className="prev-ticket">
                         <div className="prev-ticket-cover">
                             <Row>
@@ -491,7 +507,7 @@ function BookTicket() {
                                     </p>
                                     <p><span className="b">Combo:</span> {
                                         Object.entries(arrCombo).map(n => {
-                                            if(n[1] !== 0) {
+                                            if (n[1] !== 0) {
                                                 return n[0] + `(${n[1]})`
                                             }
                                         },).join(' ')
@@ -502,7 +518,8 @@ function BookTicket() {
                                         {
                                             (showTicketdetail) &&
                                             <Popover open={openPopover} content="Vui lòng chọn vé">
-                                                <Button type="primary" className="btn-next" icon={<ArrowRightOutlined/>}
+                                                <Button type="primary" className="btn-next"
+                                                        icon={<ArrowRightOutlined/>}
                                                         onClick={handleBookSeat}>Tiếp
                                                     tục</Button>
                                             </Popover>
@@ -514,7 +531,8 @@ function BookTicket() {
                                                         icon={<ArrowLeftOutlined/>}
                                                         onClick={handleComeBack}>Quay lại
                                                 </Button>
-                                                <Button type="primary" className="btn-next" icon={<ArrowRightOutlined/>}
+                                                <Button type="primary" className="btn-next"
+                                                        icon={<ArrowRightOutlined/>}
                                                         onClick={handlePayTicket}
                                                 >Tiếp
                                                     tục</Button>
@@ -529,6 +547,7 @@ function BookTicket() {
                 </Row>
             </div>
         </div>
+        </Suspense>
     );
 }
 

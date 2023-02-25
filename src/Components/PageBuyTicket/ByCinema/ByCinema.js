@@ -3,6 +3,7 @@ import "./ByCimena.scss"
 import {Col, Row} from "antd";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import * as Services from "../../../APIServices/Services"
 
 function ByCinema() {
     const [lsCinema, setLsCinema] = useState(null)
@@ -12,20 +13,25 @@ function ByCinema() {
     const [cinemaCode, setCinemaCode] = useState(null)
     const nav = useNavigate()
 
+
     useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/cinemas")
-            .then(res => res.json())
-            .then(data => {
-                setLsCinema(data)
-            })
+
+        const fetchAPI = async () => {
+            const res = await Services.getLsCinema()
+            setLsCinema(res)
+        }
+        fetchAPI()
     }, [])
 
     useEffect(() => {
-        fetch(`https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/cinemas/${idCinema}`)
-            .then(res => res.json())
-            .then(data => setLsFilmByCinema(data))
+
+        const fetchAPI = async () => {
+            const res = await Services.getScheduleCinema(idCinema)
+            setLsFilmByCinema(res)
+        }
+        fetchAPI()
+
     }, [idCinema])
-    console.log(lsFilmByCinema)
 
     const convertSub = (Sub) => {
         return Sub === "sub" ? 'Phụ đề' : 'Thuyết minh'
@@ -59,7 +65,7 @@ function ByCinema() {
                 <h3 className="pt-10 pb-10 t-upper t-cen">chọn phim</h3>
                 <div className={"list-film"}>
                     {
-                        lsFilmByCinema &&    lsFilmByCinema.map(film => {
+                        lsFilmByCinema && lsFilmByCinema.map(film => {
                             return <>
                                 <div onClick={() => {
                                     setLsShowTime(film.dates)
@@ -83,7 +89,7 @@ function ByCinema() {
                     }
                 </div>
             </Col>
-              <Col xs={24} sm={24} lg={8}>
+            <Col xs={24} sm={24} lg={8}>
                 <h3 className="pt-10 pb-10 t-upper t-cen">chọn suất</h3>
                 <div className="list-showtime">
                     {

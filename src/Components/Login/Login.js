@@ -19,8 +19,8 @@ const Login = () => {
 
     const emailRef = useRef();
     const errRef = useRef();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("nguyen1234@gmail.com");
+    const [password, setPassword] = useState("Nguyen@123");
 
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
@@ -105,6 +105,7 @@ const Login = () => {
                                 <h2 className="t-upper">Đăng nhập</h2>
                                 <input
                                     type="text"
+                                    defaultValue="nguyen1234@gmail.com"
                                     id="email"
                                     ref={emailRef}
                                     autoComplete="off"
@@ -114,6 +115,7 @@ const Login = () => {
                                     required
                                 />
                                 <input
+                                    defaultValue="Nguyen@123"
                                     type="password"
                                     placeholder="Mật khẩu"
                                     id="password"

@@ -38,24 +38,10 @@ function Header() {
                     icon: <RiLockPasswordLine/>,
                 },
                 {
-                    label: (<Link to={"/manageUser"}>
-                        Quản lý tài khoản
-                    </Link>),
-                    key: '2',
-                    icon: <UserOutlined/>,
-                },
-                {
                     label: (<Link to={"/Register"}>
                         Tạo tải khoản mới
                     </Link>),
                     key: '3',
-                    icon: <FiUserPlus/>,
-                },
-                {
-                    label: (<Link to={"/bank"}>
-                        Thêm thẻ mới
-                    </Link>),
-                    key: '4',
                     icon: <FiUserPlus/>,
                 },
                 {

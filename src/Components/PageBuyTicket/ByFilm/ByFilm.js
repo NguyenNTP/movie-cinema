@@ -3,6 +3,7 @@ import "./ByFilm.scss"
 import {Col, Row} from "antd";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import * as Services from "../../../APIServices/Services"
 
 function ByFilm() {
 
@@ -14,17 +15,21 @@ function ByFilm() {
     const nav = useNavigate()
 
     useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/nowAndSoon")
-            .then(res => res.json())
-            .then(data => {
-                setLsFilm(data.movieShowing)
-            })
+        const fetchAPI = async () => {
+            const res = await Services.getLsFilmAPI()
+            setLsFilm(res.movieShowing)
+        }
+        fetchAPI()
     }, [])
 
     useEffect(() => {
-        fetch(`https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/movie/${idFilm}`)
-            .then(res => res.json())
-            .then(data => setlsFilmCinema(data))
+
+        const fetchAPI = async () => {
+            const res = await Services.getFilmSchedule(idFilm)
+            setlsFilmCinema(res)
+        }
+        fetchAPI()
+
     }, [idFilm])
 
     const convertSub = (Sub) => {

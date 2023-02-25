@@ -6,9 +6,12 @@ import {dataTicket} from "../../../Redux/Selector";
 import {useNavigate, useParams} from "react-router-dom";
 
 import {toast} from "react-toastify";
+import axios from "axios";
 import {countDownTimer} from "../../Logic/handleDate";
 import handleMoney from "../../Logic/HandleMoney";
-import PaySuccess from "./PaySuccess/PaySuccess";
+
+import * as bankServices from "../../../APIServices/BankServices"
+import * as request from "../../../utils/Request"
 
 function PayCard() {
     const [lsbank, getLsBank] = useState(null)
@@ -25,34 +28,36 @@ function PayCard() {
 
 
     useEffect(() => {
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/Bank/Bank")
-            .then(res => res.json())
-            .then(data => getLsBank(data))
-        fetch("https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/Bank/BankCard")
-            .then(res => res.json())
-            .then(data => {
-                getLsCard(data)
-            })
+
+        const fetchAPI = async () => {
+            const resLsBank = await bankServices.getLsBank()
+            getLsBank(resLsBank);
+            const resLsCard = await bankServices.getLsCard()
+            getLsCard(resLsCard)
+        }
+        fetchAPI()
     }, [])
 
     useEffect(() => {
-        fetch(`https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/Bank/CardRef/${email}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data[0]) {
-                    getCardDefaultUser(lsCard.filter(card => {
-                        return card.CardNumber === data[0].CardNumber
-                    }))
-                } else {
-                    getCardDefaultUser([{
-                        BankId: "",
-                        CardNumber: "",
-                        ExpireDate: "",
-                        CVV: "",
-                        CardName: "",
-                    }])
-                }
-            })
+
+        const fetchAPI = async () => {
+            const res = await bankServices.findCardbyEmail(email)
+            if (res[0]) {
+                getCardDefaultUser(lsCard.filter(card => {
+                    return card.CardNumber === res[0].CardNumber
+                }))
+            } else {
+                getCardDefaultUser([{
+                    BankId: "",
+                    CardNumber: "",
+                    ExpireDate: "",
+                    CVV: "",
+                    CardName: "",
+                }])
+            }
+        }
+        fetchAPI()
+
     }, [lsCard])
 
     useEffect(() => {
@@ -76,40 +81,65 @@ function PayCard() {
         "CVV": CVV,
         "Email": email,
     }
-    console.log(data)
 
     useEffect(() => {
         if (ticketInfor.FilmName === undefined) {
-            nav('/')
+            nav('/movie-cinema')
         }
     }, [])
 
-    console.log(ticketInfor.Price.toString())
 
     const handlePay = () => {
-        if(ticketInfor) {
-        localStorage.setItem("Ticket", ticketInfor.Price.toString()
-        )}
+        if (ticketInfor) {
+            localStorage.setItem("Ticket", ticketInfor.Price.toString()
+            )
+        }
 
-        fetch('https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/Ticket', {
-            method: 'POST', // or 'PUT'
+      axios.post('https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/Ticket', {
+            ...data
+        }, {
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            console.log(response)
+            if (response.status === 200) {
+                nav('/PaySuccess?showCode=' + ticketInfor.ShowCode + '&seatCode=' + ticketInfor.SeatCode)
+            } else {
+                console.log(response.status)
+                toast.error("Sai thông tin thẻ")
+            }
         })
-            .then((response) => {
-                console.log(response)
-                if (response.status === 200) {
-                    nav('/PaySuccess?showCode=' + ticketInfor.ShowCode + '&seatCode=' + ticketInfor.SeatCode)
-                } else {
-                    console.log(response.status)
-                    toast.error("Sai thông tin thẻ")
-                }
-            })
             .catch((error) => {
                 console.error('Error:', error);
             });
+
+     /*   const postAPI =  () =>{
+             bankServices.postTicket(data)
+        }
+        postAPI()*/
+
+
+        /*  fetch('https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/Ticket', {
+              method: 'POST', // or 'PUT'
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+          })
+              .then((response) => {
+                  console.log(response)
+                  if (response.status === 200) {
+                      nav('/PaySuccess?showCode=' + ticketInfor.ShowCode + '&seatCode=' + ticketInfor.SeatCode)
+                  } else {
+                      console.log(response.status)
+                      toast.error("Sai thông tin thẻ")
+                  }
+              })
+              .catch((error) => {
+                  console.error('Error:', error);
+              });
+  */
     }
 
     useEffect(() => {
@@ -162,7 +192,8 @@ function PayCard() {
                                    onChange={(e) => getCardExp(e.target.value.trim())}/>
                         </Col>
                         <Col sm={8}>
-                            <Input defaultValue={cardDefaultUser ? cardDefaultUser[0].CVV : ""} className="mb-20"
+                            <Input type={"password"} defaultValue={cardDefaultUser ? cardDefaultUser[0].CVV : ""}
+                                   className="mb-20"
                                    placeholder="CVV" onChange={(e) => getCVV(e.target.value.trim())}/>
                         </Col>
                     </Row>

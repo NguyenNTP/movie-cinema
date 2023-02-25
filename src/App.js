@@ -22,9 +22,7 @@ import Register from "./Components/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRouteAdmin";
 import Rap from "./Components/Rap/Rap"
-import Bank from "./Components/Bank/Bank"
 import ChangePass from "./Components/ChangePass/ChangePass";
-import ManageUser from "./Components/ManageUser/ManageUser";
 import TopButton from "./Components/Logic/TopButton/TopButton";
 import PaySuccess from "./Components/PayTicket/PayCard/PaySuccess/PaySuccess";
 import FindTicket from "./Components/PayTicket/FindTicket/FindTicket";
@@ -43,10 +41,7 @@ function App() {
                     <Route path="/Pay/:email" element={<PrivateRoute><PayCard/></PrivateRoute>}/>
                     <Route path="/Muave" element={<PageBuyTicket/>}/>
                     <Route path='/rap' element={<PrivateRoute><Rap/></PrivateRoute>}/>
-                    <Route path='/manageUser'
-                           element={<PrivateRouteAdmin Role={1}> <ManageUser/> </PrivateRouteAdmin>}/>
                     <Route path="changePass" element={<ChangePass/>}/>
-                    <Route path='bank' element={<PrivateRoute><Bank/></PrivateRoute>}/>
                     <Route path='Loive' element={<PrivateRoute><BookFail/></PrivateRoute>}/>
                     <Route path='PaySuccess' element={<PrivateRoute><PaySuccess/></PrivateRoute>}/>
                     <Route path='FindTicket' element={<PrivateRoute><FindTicket/></PrivateRoute>}/>

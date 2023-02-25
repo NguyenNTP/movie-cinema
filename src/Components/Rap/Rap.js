@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer";
 import {Row, Col} from "antd"
 import {useSelector, useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import * as Services from "../../APIServices/Services"
 
 const Rap = () => {
 
@@ -48,10 +49,15 @@ const Rap = () => {
         setAvaUser(parseUser.Email)
     }, [])
 
+
     useEffect(() => {
-        fetch("https://teachingserver.onrender.com/cinema/cinemas")
-            .then((res) => res.json())
-            .then((data) => setRap(data));
+
+        const fetchAPI = async () => {
+            const res = await Services.getLsCinema()
+            setRap(res)
+
+        }
+        fetchAPI()
     }, []);
 
 
@@ -74,17 +80,11 @@ const Rap = () => {
             dispatch({type: "SetDetailFilm", payload: dataResult});
         }
 
-        if (rap) {
-            fetch(
-                `https://vietcpq.name.vn/U2FsdGVkX19udsrsAUnUBsRg8K4HmweHVb4TTgSilDI=/cinema/cinemas/${codeRap}`
-            )
-                .then((res) => res.json())
-                .then((data) => {
-
-                    // Hàm này lấy data từ fetch ra mà check filter các ngày còn thời gian phim lọc ra và dispatch nó lên redux
-                    check(data, day)
-                });
+        const fetchAPI = async () =>{
+            const res = await Services.getScheduleCinema(codeRap)
+            check(res, day)
         }
+        fetchAPI()
     }, [codeRap, day, dispatch, rap]);
 
     // console.log("checkDayCode: ", day, codeRap);
